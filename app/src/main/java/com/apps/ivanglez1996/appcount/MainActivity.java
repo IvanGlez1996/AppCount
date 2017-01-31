@@ -1,30 +1,36 @@
 package com.apps.ivanglez1996.appcount;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
-
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
-    private TextView  display;
+    private static TextView display;
     private Button boton1;
     private Button boton2;
-    private Integer counter;
+    private Presentador presentador;
 
-    class MyButtonListener implements View.OnClickListener {
+
+    class MyButtonListener1 implements View.OnClickListener {
 
         @Override
         public void onClick(View view) {
-            if(view.equals(boton1.findViewById(R.id.button1))){
-                counter++;
-            }else{
-                counter--;
-            }
-            display.setText(counter.toString());
+            presentador.aumentar();
         }
+    }
+
+    class MyButtonListener2 implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            presentador.disminuir();
+        }
+    }
+
+    public static void mostrarTexto(Integer numero){
+        display.setText(numero.toString());
     }
 
     @Override
@@ -32,11 +38,13 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        counter = 0;
-        boton1 = (Button)findViewById(R.id.button1);
-        boton2 = (Button)findViewById(R.id.button2);
+        boton1 = (Button) findViewById(R.id.button1);
+        boton2 = (Button) findViewById(R.id.button2);
         display = (TextView) findViewById(R.id.display);
-        boton1.setOnClickListener(new MyButtonListener());
-        boton2.setOnClickListener(new MyButtonListener());
+
+        boton1.setOnClickListener(new MyButtonListener1());
+        boton2.setOnClickListener(new MyButtonListener2());
+
+        presentador = new Presentador();
     }
 }
