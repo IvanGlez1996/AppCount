@@ -10,17 +10,17 @@ public class Modelo {
 
     public Modelo(){
         this.counter = 0;
-
     }
 
-    public Integer aumentar(){
-        counter++;
-        return counter;
-
+    public void aumentar(){
+        this.counter++;
     }
-    public Integer disminuir(){
-        counter--;
-        return counter;
 
+    public void disminuir(){
+        this.counter--;
+    }
+
+    public Integer getCounter(){
+        return this.counter;
     }
 }

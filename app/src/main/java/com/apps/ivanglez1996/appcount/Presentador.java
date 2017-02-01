@@ -1,28 +1,27 @@
 package com.apps.ivanglez1996.appcount;
 
+import android.view.View;
+
 /**
  * Created by ivang_000 on 29/01/2017.
  */
 
-public class Presentador implements InterfazPresentador {
+public class Presentador {
+    private Vista vista;
     private Modelo modelo;
 
-    public Presentador(){
-        modelo = new Modelo();
+    public Presentador(Vista vista){
+        this.vista = vista;
+        this.modelo = new Modelo();
     }
 
     public void aumentar(){
-        Integer numero = modelo.aumentar();
-        mostrarTexto(numero);
-
+        modelo.aumentar();
+        vista.mostrarTexto(modelo.getCounter().toString());
     }
+
     public void disminuir(){
-        Integer numero = modelo.disminuir();
-        mostrarTexto(numero);
-
-
-    }
-    public void mostrarTexto (Integer numero){
-        MainActivity.mostrarTexto(numero);
+        modelo.disminuir();
+        vista.mostrarTexto(modelo.getCounter().toString());
     }
 }
