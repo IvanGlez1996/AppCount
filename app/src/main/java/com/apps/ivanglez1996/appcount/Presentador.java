@@ -1,27 +1,23 @@
 package com.apps.ivanglez1996.appcount;
 
-import android.view.View;
-
 /**
  * Created by ivang_000 on 29/01/2017.
  */
 
 public class Presentador {
-    private Vista vista;
-    private Modelo modelo;
+    private Mediador mediador;
 
-    public Presentador(Vista vista){
-        this.vista = vista;
-        this.modelo = new Modelo();
+    public Presentador(Mediador mediador){
+        this.mediador = mediador;
     }
 
     public void aumentar(){
-        modelo.aumentar();
-        vista.mostrarTexto(modelo.getCounter().toString());
+        mediador.getModelo().aumentar();
+        mediador.getVista().mostrarTexto(mediador.getModelo().getCounter().toString());
     }
 
     public void disminuir(){
-        modelo.disminuir();
-        vista.mostrarTexto(modelo.getCounter().toString());
+        mediador.getModelo().disminuir();
+        mediador.getVista().mostrarTexto(mediador.getModelo().getCounter().toString());
     }
 }
