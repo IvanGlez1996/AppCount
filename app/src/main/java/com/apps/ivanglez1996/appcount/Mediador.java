@@ -15,20 +15,20 @@ public class Mediador extends Application {
     public void onCreate(){
         super.onCreate();
 
-        vista = new Vista();
-        modelo = new Modelo();
-        presentador = new Presentador(this);
+        this.vista = new Vista();
+        this.modelo = new Modelo();
+        this.presentador = new Presentador(this);
     }
 
     public Presentador getPresentador(){
-        return presentador;
+        return this.presentador;
     }
 
     public Modelo getModelo(){
-        return modelo;
+        return this.modelo;
     }
 
     public Vista getVista(){
-        return vista;
+        return this.vista;
     }
 }

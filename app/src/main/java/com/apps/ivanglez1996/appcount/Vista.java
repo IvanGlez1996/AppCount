@@ -6,17 +6,31 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.apps.ivanglez1996.appcount.R;
-import com.apps.ivanglez1996.appcount.Presentador;
-
 public class Vista extends Activity {
     private TextView display;
     private Button boton1;
     private Button boton2;
     private Mediador mediador;
+    private Presentador presentador;
 
     public void mostrarTexto(String text){
         display.setText(text);
+    }
+    class MyButtonListener1 implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            presentador.aumentar();
+        }
+    }
+
+    //Listener para el boton de resta
+    class MyButtonListener2 implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            presentador.disminuir();
+        }
     }
 
     @Override
@@ -24,24 +38,14 @@ public class Vista extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mediador = (Mediador)getApplication();
         boton1 = (Button) findViewById(R.id.button1);
         boton2 = (Button) findViewById(R.id.button2);
         display = (TextView) findViewById(R.id.display);
 
-        boton1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediador.getPresentador().aumentar();
-            }
-        });
-        boton2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediador.getPresentador().disminuir();
-            }
-        });
+        boton1.setOnClickListener(new MyButtonListener1());
+        boton2.setOnClickListener(new MyButtonListener2());
 
-
+        mediador = (Mediador)getApplication();
+        presentador = mediador.getPresentador();
     }
 }

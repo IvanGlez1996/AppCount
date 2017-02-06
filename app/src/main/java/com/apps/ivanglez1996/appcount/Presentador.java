@@ -6,18 +6,22 @@ package com.apps.ivanglez1996.appcount;
 
 public class Presentador {
     private Mediador mediador;
+    private Modelo modelo;
+    private Vista vista;
 
     public Presentador(Mediador mediador){
         this.mediador = mediador;
+        this.modelo = mediador.getModelo();
+        this.vista = mediador.getVista();
     }
 
     public void aumentar(){
-        mediador.getModelo().aumentar();
-        mediador.getVista().mostrarTexto(mediador.getModelo().getCounter().toString());
+        this.modelo.aumentar();
+        this.vista.mostrarTexto(this.modelo.getCounter().toString());
     }
 
     public void disminuir(){
-        mediador.getModelo().disminuir();
-        mediador.getVista().mostrarTexto(mediador.getModelo().getCounter().toString());
+        this.modelo.disminuir();
+        this.vista.mostrarTexto(this.modelo.getCounter().toString());
     }
 }
