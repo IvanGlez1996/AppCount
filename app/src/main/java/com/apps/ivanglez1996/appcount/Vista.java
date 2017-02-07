@@ -7,7 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class Vista extends Activity {
-    private TextView display;
+    private static TextView display;
     private Button boton1;
     private Button boton2;
     private Mediador mediador;
